@@ -5,4 +5,5 @@ TODO:
 4. Show infomation on product.php page (List of products + buttom add to cart)
 5. Click on add to cart button -> save product into session
 6. Get list of cart from session 
-7. Show list of cart on cart.php page
+7. Show list of cart on list_cart.php page
+8. Handle session cart.php 
