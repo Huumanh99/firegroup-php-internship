@@ -30,7 +30,6 @@ if (!empty($_GET['action']) && $_GET['action'] == 'delete') {
             </thead>
             <tbody>
                 <?php
-
                 foreach ($_SESSION['cart'] as $key => $val) { ?>
                     <tr>
                         <td><?= $key ?></td>
