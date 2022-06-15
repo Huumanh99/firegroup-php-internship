@@ -10,10 +10,10 @@ if (!empty($_GET['action']) && $_GET['action'] == 'delete') {
 
 <?php if (isset($_SESSION['cart'])) : ?>
     <div style="text-align:center;">
-        <h2>Danh sách sản phẩm</h2>
+        <h2>List of Products</h2>
     </div>
     <div style="text-align:center;">
-        <h2><a href="products.php">Tiếp tục mua</a></h2>
+        <h2><a href="products.php">Back to shopping </a></h2>
     </div>
     <div style=" margin: 20px; flex-direction: column;
     align-items: center; display: flex;
@@ -37,13 +37,13 @@ if (!empty($_GET['action']) && $_GET['action'] == 'delete') {
                         <td><?= $val['quantity'] ?></td>
                         <td><?= $val['price'] ?>Đ</td>
                         <td><?= $val['produced_date'] ?></td>
-                        <td><a href="list_cart.php?id=<?php echo $key ?>&action=delete">Xóa</a></td>
+                        <td><a href="list_cart.php?id=<?php echo $key ?>&action=delete">Delete</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 <?php else : ?>
-    <p>Không có gì trong giỏ</p>
+    <p>Nothing in the basket</p>
 
 <?php endif; ?>

@@ -16,7 +16,8 @@ include_once("./connect/connectDB.php");
 <body>
     <div class="boxcenter" style=" margin: 20px; flex-direction: column; align-items: center; display: flex;gap: 10px;">
         <?php
-        if (isset($_SESSION['message'])) {
+
+        if (empty(($_SESSION['cart']))) {
             echo "<p><strong>Message: </strong>" . $_SESSION['message'] . "</p>";
         }
         ?>
@@ -24,29 +25,28 @@ include_once("./connect/connectDB.php");
         <div class="row mb header" style="text-align:center;">
             <h1>SHOPPING</h1>
         </div>
-
         <?php
         $sumQuantity = 0;
         $total = 0;
-
-        ?>
-        <?php foreach ($_SESSION['cart'] as $val) { ?>
-            <?php $total +=  $val['price'] * $val['quantity']; ?>
-            <?php $sumQuantity = $sumQuantity + $val['quantity']; ?>
+        if (!empty($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $val) { ?>
+                <?php $total +=  $val['price'] * $val['quantity']; ?>
+                <?php $sumQuantity = $sumQuantity + $val['quantity']; ?>
         <?php
 
+            }
         } ?>
 
         <div class="row mb menu">
             <a href="list_cart.php ">
-                <em class="fa fa-shopping-cart" style="font-size:20px;color:red; float: right;">Giỏ hàng<sup style="font-size:30px">
+                <em class="fa fa-shopping-cart" style="font-size:20px;color:red; float: right;">Cart<sup style="font-size:30px">
                         <?php if (!empty($_SESSION['cart'])) {
                             echo $sumQuantity;
                         } ?>
                     </sup>
                 </em>
             </a>
-            <p>Tổng tiền là: <?php echo $total ?></p>
+            <p>Total price: <?php echo $total ?></p>
         </div>
         <div class="row mb" style="text-align:center;width: 100%;display: flex; justify-content: center;">
             <?php
@@ -85,9 +85,10 @@ include_once("./connect/connectDB.php");
 <?php
 function getDb($conn)
 {
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM carts";
     if ($result = $conn->query($sql)) {
         return $result;
     }
+    $conn->close();
 }
 ?>
