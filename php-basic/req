@@ -1,4 +1,4 @@
-TODO:
+# Shopping cart
 1. Create table products (id,name,quantity,price,produced_date)
 2. Add list of 4 products into database
 3. Get list of products
@@ -6,4 +6,16 @@ TODO:
 5. Click on add to cart button -> save product into session
 6. Get list of cart from session 
 7. Show list of cart on list_cart.php page
-8. Handle session cart.php 
+
+# Decentralization and create products
+1. Create form Register and Login
+2. Remember login
+
++ Admin:
+3. List of User, List of products
+4. Create,Edit,Delete
+5. Delete User, Edit User->Admin, Detele itself
+
++ Accounts:
+6. List of Product
+7. Create Products, View Products{id}, Edit, Deltele 

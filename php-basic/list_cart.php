@@ -44,6 +44,6 @@ if (!empty($_GET['action']) && $_GET['action'] == 'delete') {
         </table>
     </div>
 <?php else : ?>
-    <p>Không có gì trong giỏ</p>
+    <p>Nothing in the basket</p>
 
 <?php endif; ?>

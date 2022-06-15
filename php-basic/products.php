@@ -17,28 +17,25 @@ include_once("./connect/connectDB.php");
     <div class="boxcenter" style=" margin: 20px; flex-direction: column; align-items: center; display: flex;gap: 10px;">
         <?php
 
-        if(!empty(($_SESSION['cart']))) {
-            echo "<p><strong>Message: </strong>" . $_SESSION['message'] . "</p>";  
+        if (empty(($_SESSION['cart']))) {
+            echo "<p><strong>Message: </strong>" . $_SESSION['message'] . "</p>";
         }
         ?>
 
         <div class="row mb header" style="text-align:center;">
             <h1>SHOPPING</h1>
         </div>
-
         <?php
         $sumQuantity = 0;
         $total = 0;
-
-        ?>
-        <?php
-        if(!empty($_SESSION['cart'])){
-        foreach ($_SESSION['cart'] as $val) { ?>
-            <?php $total +=  $val['price'] * $val['quantity']; ?>
-            <?php $sumQuantity = $sumQuantity + $val['quantity']; ?>
+        if (!empty($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $val) { ?>
+                <?php $total +=  $val['price'] * $val['quantity']; ?>
+                <?php $sumQuantity = $sumQuantity + $val['quantity']; ?>
         <?php
 
-        }  }?>
+            }
+        } ?>
 
         <div class="row mb menu">
             <a href="list_cart.php ">
@@ -82,14 +79,16 @@ include_once("./connect/connectDB.php");
         </div>
     </div>
 </body>
+
 </html>
 
 <?php
-    function getDb($conn) {
-        $sql = "SELECT * FROM products";
-        if ($result = $conn->query($sql)) {
-            return $result;
-        }
-    $conn->close();
+function getDb($conn)
+{
+    $sql = "SELECT * FROM carts";
+    if ($result = $conn->query($sql)) {
+        return $result;
     }
+    $conn->close();
+}
 ?>
